@@ -1,11 +1,39 @@
-div{
-  background-color: red;
-  border: 1px solid black;
-  height: 20px;
-  width: 20px;
+body{
+  margin: auto;
+  text-align: center;
+  font-family: Ubuntu, sans-serif;
+}
+html{
+  /*image not being opaque!!*/
+  background-image: url("https://secure.static.tumblr.com/c9213e31968b0b7d1094e387aaf46c72/2abovtd/kPymrw0jm/tumblr_static_fondale_prezi.jpg");
+  opacity:.6;
+}
+h1{
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: #fff;
 }
 
-h1{
+#container{
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
   margin: auto;
-  align-content: center;
+  background-color: #F5EBBF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: .9;
+}
+
+
+#letters span{
+  padding: 3px;
+}
+#letters span:hover{
+  color: #ADFFC6;
+}
+#container img{
+  height: 200px;
+  width: 200px;
 }
