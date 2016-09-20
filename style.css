@@ -13,9 +13,15 @@ h1{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: #fff;
 }
+#start{
+  background-color: #e7e7e7;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #4CAF50;
+}
 
 #container{
-  width: 50%;
+  width: 70%;
   border-radius: 5px;
   padding: 10px;
   margin: auto;
@@ -25,23 +31,47 @@ h1{
   justify-content: center;
   flex-direction: column;
   opacity: .8;
+  /*overflow: hidden;*/
+
+}
+#letters{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 #letters ul{
-  display: flex;
+  display:flex;
+  flex-wrap: wrap;
   flex-direction: row;
 }
 #letters li{
-  padding: 3px;
   list-style-type: none;
   justify-content: center;
+  align-content: flex-start;
+  margin: 0 10px 10px 0;
+  width:35px;
+  height:30px;
+  padding-top: 5px;
+  background:#fff;
+  cursor:pointer;
+  border-radius: 5px;
+  border: solid 1px $white;
 }
 #letters li:hover{
-  color: #ADFFC6;
+  color: #fff;
+  background-color: #CFCFCF;
+  border: solid 1px #fff;
 }
+#letters li:active{
+  opacity:.3
+  border: solid 1px #fff;
+}
+
 #word ul{
   display:flex;
   flex-direction: row;
+  font-size: 150%;
 }
 #word li{
   padding: 3px;
@@ -50,6 +80,6 @@ h1{
 }
 
 #container img{
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 }
