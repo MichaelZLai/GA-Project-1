@@ -1,13 +1,20 @@
 //Initiate prompt to store word to be guessed
+$("#reset").hide();
 $("#start").on("click", startGame);
 
 function startGame(){
-  var wordInput = prompt("Put a word to guess!")
+  var wordInput = prompt("First Player: Put a word to guess!")
+
   var guessArr = [];
   var guess;
 
   var limbs = 6;
   var counter = 0;
+  //Tells instruction to select a letter
+  $("#startLetter").html("Please Select a Letter");
+  //Hides start button and shows reset button
+  $("#start").hide();
+  $("#reset").show();
 // Create underscores of letters to be guessed
 function updateLetter(){
   var wordHolder = document.getElementById("word");
@@ -33,12 +40,12 @@ updateLetter();
   $("li#letter").on("click", guessLetter);
   function guessLetter() {
     var guess = (this.innerHTML);
-    console.log("letter selected is ",$(this).text());
     $(this).on("click", null);
     for (var i = 0; i < wordInput.length; i++) {
       if (wordInput[i] === guess) {
         guessArr[i].innerHTML = guess;
         counter += 1;
+        console.log("You have " + counter + " letters correct");
       }
     }
     //
@@ -51,7 +58,7 @@ updateLetter();
     }
     console.log($(this));
 
-    // does the element that I clicked have a class of "active"
+    //Clicked letter has a class of "active"
     var isActive = $(this).hasClass(".active");
     if(!isActive) {
       $(this).addClass("active")
@@ -61,7 +68,7 @@ updateLetter();
 
 // Show how many limbs are left
  function showLimbs() {
-  $("#numLimbs").html("You have " + limbs + " limbs");
+  $("#numLimbs").html("You have " + limbs + " limbs left!");
   //Changes hallows image with limbs
   if (limbs === 5) {
     $("img").attr("src", "http://s22.postimg.org/xvxxf1z1d/image.png");
@@ -80,6 +87,7 @@ updateLetter();
   for (i = 0; i < guessArr.length; i++) {
     if (counter === guessArr.length) {
       $("#numLimbs").html("You Win!");
+      console.log("You win");
     }
   }
   //Game over function
@@ -98,4 +106,10 @@ updateLetter();
   };
   }
 }
+//Refresh game with reset button
+$("#reset").on("click",refreshPage);
+function refreshPage() {
+    location.reload();
+}
+
 //Prevent user from asking the same letter

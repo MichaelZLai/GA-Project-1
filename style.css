@@ -2,12 +2,11 @@ body{
   margin: auto;
   text-align: center;
   font-family: Ubuntu, sans-serif;
-  /*display: flex;*/
 }
 html{
-  /*image not being opaque!!*/
   background-image: url("https://secure.static.tumblr.com/c9213e31968b0b7d1094e387aaf46c72/2abovtd/kPymrw0jm/tumblr_static_fondale_prezi.jpg");
-  /*opacity:.6;*/
+  background-size: 1300px 636px;
+  background-repeat: no-repeat;
 }
 h1{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -17,7 +16,11 @@ h1{
   background-color: #e7e7e7;
   font-size: 16px;
   border-radius: 8px;
-  border: 2px solid #4CAF50;
+  margin-top: 20px;
+}
+.button:hover{
+  border: 2px solid #FF6A38;
+  opacity: .9;
 }
 .missLetter{
   color: red;
@@ -25,7 +28,7 @@ h1{
 
 #container{
   width: 70%;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   margin: auto;
   background-color: #F5EBBF;
@@ -41,6 +44,7 @@ h1{
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  padding-top: 20px;
 }
 
 #letters ul{
