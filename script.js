@@ -7,7 +7,7 @@ function startGame(){
   var guess;
 
   var lives = 6;
-
+  var counter = 0;
 // Create underscores of letters to be guessed
 function updateLetter(){
   var wordHolder = document.getElementById("word");
@@ -35,30 +35,46 @@ updateLetter();
   function guessLetter() {
     var guess = (this.innerHTML);
     console.log("letter selected is ",$(this).text());
-    $(this).attr("class", "active");
     $(this).on("click", null);
     for (var i = 0; i < wordInput.length; i++) {
       if (wordInput[i] === guess) {
         guessArr[i].innerHTML = guess;
-        // counter += 1;
+        counter += 1;
       }
     }
-    // var j = (wordInput.indexOf(guess));
-    // if (j === -1) {
-    //   lives -= 1;
-    //   comments();
-    //   animate();
-    // } else {
-    //   comments();
-    // }
-  };
-// }
+    //
+    var isLetter= (wordInput.indexOf(guess));
+    if (isLetter === -1) {
+      lives -= 1;
+      showLives();
+    } else {
+      showLives();
+    }
+    console.log($(this));
 
+    // does the element that I clicked have a class of "active"
+    var isActive = $(this).hasClass(".active");
+    if(!isActive) {
+      $(this).addClass("active")
+    }
+  };
+
+
+// Show how many lives are left
+ function showLives() {
+  $("#numLives").html("You have " + lives + " lives");
+  //Game Over
+  if (lives < 1) {
+    $("#numLives").html("Game Over");
+  };
+  //Winning the Game
+  for (i = 0; i < guessArr.length; i++) {
+    if (counter === guessArr.length) {
+      $("#numLives").html("You Win!");
+    }
+  }
+}
 //Prevent user from asking the same letter
 
-//When you run out of lives
-
-
-//Display alert stating you have won or lost! Play again?
 
 };
