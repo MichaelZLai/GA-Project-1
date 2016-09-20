@@ -6,7 +6,7 @@ function startGame(){
   var guessArr = [];
   var guess;
 
-  var lives = 6;
+  var limbs = 6;
   var counter = 0;
 // Create underscores of letters to be guessed
 function updateLetter(){
@@ -18,7 +18,6 @@ function updateLetter(){
     guess.setAttribute("class", "guess");
     if (wordInput[i] === " ") {
             guess.innerHTML = " ";
-            space = 1;
           } else {
             guess.innerHTML = "_";
           };
@@ -30,7 +29,7 @@ function updateLetter(){
       };
 updateLetter();
 
-//If user gets a right letter, show letter on board ELSE show body part
+//If user gets a right letter, show letter on board
   $("li#letter").on("click", guessLetter);
   function guessLetter() {
     var guess = (this.innerHTML);
@@ -45,10 +44,10 @@ updateLetter();
     //
     var isLetter= (wordInput.indexOf(guess));
     if (isLetter === -1) {
-      lives -= 1;
-      showLives();
+      limbs -= 1;
+      showLimbs();
     } else {
-      showLives();
+      showLimbs();
     }
     console.log($(this));
 
@@ -60,21 +59,43 @@ updateLetter();
   };
 
 
-// Show how many lives are left
- function showLives() {
-  $("#numLives").html("You have " + lives + " lives");
-  //Game Over
-  if (lives < 1) {
-    $("#numLives").html("Game Over");
+// Show how many limbs are left
+ function showLimbs() {
+  $("#numLimbs").html("You have " + limbs + " limbs");
+  //Changes hallows image with limbs
+  if (limbs === 5) {
+    $("img").attr("src", "http://s22.postimg.org/xvxxf1z1d/image.png");
+  } else if (limbs === 4){
+    $("img").attr("src", "http://s22.postimg.org/4utl5neld/image.png");
+  } else if (limbs === 3){
+    $("img").attr("src", "http://s22.postimg.org/nbnzwgujl/image.png");
+  } else if (limbs === 2){
+    $("img").attr("src", "http://s22.postimg.org/v5olhv2ch/image.png");
+  } else if (limbs === 1){
+    $("img").attr("src", "http://s22.postimg.org/julxthvhd/image.png");
+  } else if (limbs === 0) {
+    gameOver();
   };
   //Winning the Game
   for (i = 0; i < guessArr.length; i++) {
     if (counter === guessArr.length) {
-      $("#numLives").html("You Win!");
+      $("#numLimbs").html("You Win!");
     }
+  }
+  //Game over function
+  function gameOver(){
+    $("#numLimbs").html("Game Over");
+    $("img").attr("src", "http://s22.postimg.org/h0jamymqp/image.png");
+    for (var i=0; i<wordInput.length;i++){
+      var currentLetter = $("li.guess").eq(i).text();
+      if (wordInput[i] != currentLetter){
+        //put missing letter in spot
+        $("li.guess").eq(i).text(wordInput[i]);
+        //set missing color to red
+        $("li.guess").eq(i).addClass("missLetter");
+      }
+    }
+  };
   }
 }
 //Prevent user from asking the same letter
-
-
-};
