@@ -1,46 +1,64 @@
-var wordArr = [];
-var guessArr = [];
-
-var lives = 6;
-
 //Initiate prompt to store word to be guessed
-var wordInput = prompt("Put a word to guess!");
-var wordUnderline = "";
+$("#start").on("click", startGame);
 
-function setUnderline(){
+function startGame(){
+  var wordInput = prompt("Put a word to guess!")
+  var guessArr = [];
+  var guess;
+
+  var lives = 6;
+
+// Create underscores of letters to be guessed
+function updateLetter(){
+  var wordHolder = document.getElementById("word");
+  var correct = document.createElement("ul");
   for (i=0; i<wordInput.length; i++){
-    wordArr[i] = wordInput.charAt(i);
-    console.log("Count Letters");
-    guessArr[i] = "_";
-  }
-  wordUnderline = guessArr.join();
-  $("#word").html(wordUnderline);
-};
+    correct.setAttribute("id","myWord");
+    var guess = document.createElement("li");
+    guess.setAttribute("class", "guess");
+    if (wordInput[i] === " ") {
+            guess.innerHTML = " ";
+            space = 1;
+          } else {
+            guess.innerHTML = "_";
+          };
 
-setUnderline();
+          guessArr.push(guess);
+          wordHolder.appendChild(correct);
+          correct.appendChild(guess);
+        }
+      };
+updateLetter();
 
-//When user guesses letter, parse array of alphabet
-function updateLetter(letters){
-  var changes = 0;
-  for (i=0;i<wordInput.length;i++){
-    wordArr[i] = wordInput.charAt(i);
-    if(wordInput.charAt(i) == letters){
-      guessArr[i] == letters;
-      changes += 1;
+//If user gets a right letter, show letter on board ELSE show body part
+  $("li#letter").on("click", guessLetter);
+  function guessLetter() {
+    var guess = (this.innerHTML);
+    console.log("letter selected is ",$(this).text());
+    $(this).attr("class", "active");
+    $(this).on("click", null);
+    for (var i = 0; i < wordInput.length; i++) {
+      if (wordInput[i] === guess) {
+        guessArr[i].innerHTML = guess;
+        // counter += 1;
+      }
     }
-  }
-
-}
-
-//If user gets a right letter, show letter on board else show body part
+    // var j = (wordInput.indexOf(guess));
+    // if (j === -1) {
+    //   lives -= 1;
+    //   comments();
+    //   animate();
+    // } else {
+    //   comments();
+    // }
+  };
+// }
 
 //Prevent user from asking the same letter
 
-//Display alert stating you have won or lost! Play again?
-var rightWord = wordArr.join("");
-var guessWord = guessArr.join("");
+//When you run out of lives
 
-if(rightWord == guessWord){
-  alert("You win! Click OK to play again");
-  location.reload();
-}
+
+//Display alert stating you have won or lost! Play again?
+
+};
