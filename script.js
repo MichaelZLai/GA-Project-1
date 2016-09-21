@@ -10,7 +10,7 @@ function putWord(){
   $("#inputWord").show();
   $("#submit").show();
   $("#start").hide();
-
+  //Register after pressing submit to start game
   $("#submit").on("click", startGame);
 
 //Main content of the game is shown
@@ -22,6 +22,11 @@ function startGame(){
 
   var limbs = 6;
   var counter = 0;
+  //Only load main content if there is a value for input
+  if ($("#inputWord").val() === ""){
+    console.log("hi");
+    return;
+  }
   //Tells instruction to select a letter
   $("#startLetter").html("Please Select a Letter");
   //Hides input/submit and shows main body & reset button
