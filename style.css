@@ -12,13 +12,38 @@ h1{
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: #fff;
 }
-.button{
+#reset{
   background-color: #e7e7e7;
   font-size: 16px;
   border-radius: 8px;
   margin-top: 20px;
 }
-.button:hover{
+#reset:hover{
+  border: 2px solid #FF6A38;
+  opacity: .9;
+}
+
+#start{
+  background-color: #e7e7e7;
+  color: #757575;
+  font-size: 50px;
+  border-radius: 8px;
+  margin-top: 220px;
+  font-family: "Droid Sans", sans-serif;
+}
+#start:hover{
+  border: 2px solid #FF6A38;
+  opacity: .9;
+}
+#inputWord, #submit{
+  background-color: #e7e7e7;
+  color: #757575;
+  font-size: 25px;
+  border-radius: 8px;
+  margin-top: 220px;
+  font-family: "Droid Sans", sans-serif;
+}
+#submit:hover{
   border: 2px solid #FF6A38;
   opacity: .9;
 }
@@ -37,8 +62,6 @@ h1{
   justify-content: center;
   flex-direction: column;
   opacity: .8;
-  /*overflow: hidden;*/
-
 }
 #letters{
   display: flex;
@@ -56,19 +79,19 @@ h1{
   list-style-type: none;
   justify-content: center;
   align-content: flex-start;
-  margin: 0 10px 10px 0;
+  margin: 5px 10px 10px 5px;
   width:35px;
   height:30px;
   padding-top: 5px;
   background:#fff;
   cursor:pointer;
   border-radius: 5px;
-  border: solid 1px $white;
+  border: solid 1px #fff;
 }
 #letters li:hover{
   color: #fff;
   background-color: #CFCFCF;
-  border: solid 1px #fff;
+  border: solid 1px #FF6A38;
 }
 #letters .active {
   color: #fff;
@@ -96,7 +119,9 @@ h1{
 #myword{
   display:flex;
   justify-content: center;
-  padding: none;
+}
+#numLimbs{
+  margin-bottom: 5px;
 }
 
 #container img{

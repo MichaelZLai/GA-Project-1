@@ -1,9 +1,21 @@
 //Initiate prompt to store word to be guessed
 $("#reset").hide();
-$("#start").on("click", startGame);
+$("#container").hide();
+$("#inputWord").hide();
+$("#submit").hide();
+$("#start").on("click", putWord);
 
+function putWord(){
+  //Shows input/submit and hides start button
+  $("#inputWord").show();
+  $("#submit").show();
+  $("#start").hide();
+
+  $("#submit").on("click", startGame);
+
+//Main content of the game is shown
 function startGame(){
-  var wordInput = prompt("First Player: Put a word to guess!")
+  var wordInput = $("#inputWord").val()
 
   var guessArr = [];
   var guess;
@@ -12,8 +24,10 @@ function startGame(){
   var counter = 0;
   //Tells instruction to select a letter
   $("#startLetter").html("Please Select a Letter");
-  //Hides start button and shows reset button
-  $("#start").hide();
+  //Hides input/submit and shows main body & reset button
+  $("#inputWord").hide();
+  $("#submit").hide();
+  $("#container").show();
   $("#reset").show();
 // Create underscores of letters to be guessed
 function updateLetter(){
@@ -48,7 +62,7 @@ updateLetter();
         console.log("You have " + counter + " letters correct");
       }
     }
-    //
+    //Logic for Hangman to show limbs
     var isLetter= (wordInput.indexOf(guess));
     if (isLetter === -1) {
       limbs -= 1;
@@ -69,6 +83,8 @@ updateLetter();
 // Show how many limbs are left
  function showLimbs() {
   $("#numLimbs").html("You have " + limbs + " limbs left!");
+  //Change limbs to red color to indicate how many limbs are left
+  $("#numLimbs").eq(9).css("color","red");
   //Changes hallows image with limbs
   if (limbs === 5) {
     $("img").attr("src", "http://s22.postimg.org/xvxxf1z1d/image.png");
@@ -105,6 +121,7 @@ updateLetter();
     }
   };
   }
+}
 }
 //Refresh game with reset button
 $("#reset").on("click",refreshPage);
