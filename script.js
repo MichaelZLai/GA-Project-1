@@ -81,6 +81,8 @@ updateLetter();
     var isActive = $(this).hasClass(".active");
     if(!isActive) {
       $(this).addClass("active")
+      //Turns off firing for the letter
+      $(this).off("click");
     }
   };
 
@@ -133,5 +135,3 @@ $("#reset").on("click",refreshPage);
 function refreshPage() {
     location.reload();
 }
-
-//Prevent user from asking the same letter

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Arimo|Droid+Sans|Ubuntu" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Michael's Hangman</title>
@@ -11,7 +12,8 @@
     <header>
       <h1>2 Player Hangman!</h1>
     </header>
-    <input id="inputWord" type="text" placeholder="Put a word to guess!"></input>
+    <!-- Input Word to be guessed -->
+    <input id="inputWord" type="text" placeholder="Put a word to guess!" alt="Put a word to guess"></input>
     <input id="submit" type="submit"></input>
   <div id="container">
 <!-- Gallows -->
@@ -39,6 +41,7 @@
       </ul>
     </div>
   </div>
+  <!-- Starting/Resetting Game -->
   <button id="start">Start Game!</button>
   <button id="reset">Reset</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

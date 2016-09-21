@@ -67,7 +67,6 @@ h1{
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  padding-top: 20px;
 }
 
 #letters ul{
@@ -109,6 +108,7 @@ h1{
   display:flex;
   flex-direction: row;
   font-size: 150%;
+  padding: inherit;
 }
 #word li{
   padding: 4px;
